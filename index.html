@@ -2,23 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Full Page Image</title>
+    <title>Press to Show Image</title>
     <style>
-        html, body {
+        body {
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-family: Arial, sans-serif;
         }
 
         img {
-            width: 100vw;
-            height: 100vh;
-            object-fit: contain; /* use 'contain' if you don't want cropping */
+            display: none;
+            max-width: 100%;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <img src="polarbear.png" alt="Full Page Image">
+
+    <button 
+        onmousedown="showImage()" 
+        onmouseup="hideImage()" 
+        onmouseleave="hideImage()"
+        ontouchstart="showImage()" 
+        ontouchend="hideImage()"
+    >
+        Press & Hold to View Image
+    </button>
+
+    <img id="myImage" src="polarbear.png" alt="Hidden Image">
+
+    <script>
+        function showImage() {
+            document.getElementById("myImage").style.display = "block";
+        }
+
+        function hideImage() {
+            document.getElementById("myImage").style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
